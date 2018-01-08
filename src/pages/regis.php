@@ -1,4 +1,53 @@
-<form id="frmRegis" class="form-horizontal" method="post">
+<?php
+
+$fullname = P("fullname");
+$username = P("username");
+$password = P("username");
+$email = P("email");
+$tel = P("tel");
+
+if(!empty($fullname)
+&& !empty($username)
+&& !empty($password)
+&& !empty($email)
+&& !empty($tel)
+){
+
+  $avt = "";
+  if(!empty($_FILES["avt"]["name"])){
+
+    $folder_dt = date("Ymd");
+    $folder_upload = "uploads/" . $folder_dt;
+
+    if (!file_exists($folder_upload)):
+      $oldmask = umask(0);
+      mkdir($folder_upload, 0777, true);
+      umask($oldmask);
+    endif;
+    
+    $target_file = $folder_upload . "/" . $folder_dt . "-" . $_FILES["avt"]["name"];
+    move_uploaded_file($_FILES["avt"]["tmp_name"], $target_file);
+
+    $avt = $target_file;
+  }
+
+  $pwd = md5($username . $password);
+  $sql = "insert into user(username, password, email, tel, name, avt) value('$username','$pwd','$email','$tel','$fullname','$avt')";
+  $result = $conn->query($sql);
+
+  if($result) {
+    header('Location: /regis?status=completed');
+    exit();
+  }
+
+}
+
+if(G("status") == "completed") {
+  echo '<div class="alert alert-success" role="alert">สมัครเสร็จสมบูรณ์</div>';
+}
+?>
+
+<form id="frmRegis" class="form-horizontal" method="post" enctype="multipart/form-data">
   <div class="alert alert-danger hide" role="alert"></div>
   <h3>สมัครสมาชิก</h3>
   <div class="form-group">
@@ -37,6 +86,15 @@
       <input type="tel" class="form-control" id="tel" name="tel" placeholder="Telephone">
     </div>
   </div>
+  <div class="form-group">
+    <label for="inputPassword3" class="col-sm-3 control-label">Avatar</label>
+    <div class="col-sm-8">
+      <input type="file" name="avt" id="avt">
+    </div>
+  </div>
+
+
+
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-8">
       <button type="submit" class="btn btn-primary">สมัครสามาชิก</button>
