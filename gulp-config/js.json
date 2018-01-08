@@ -1,0 +1,20 @@
+{
+  "vendors": {
+    "target_path": "./dist/scripts",
+    "target_filename": "vendors.js",
+    "tmp_path": "./tmp/",
+    "file_list": [
+      "node_modules/jquery/jquery.min.js",
+      "node_modules/bootstrap/dist/js/bootstrap.min.js"
+    ]
+  },
+  "apps": {
+    "target_path": "./dist/scripts",
+    "target_filename": "apps.js",
+    "watch_path": "./src/js/**/*.js",
+    "tmp_path": "./tmp/",
+    "file_list": [
+      "src/js/app/main.js"
+    ]
+  }
+}
