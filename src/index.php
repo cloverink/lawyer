@@ -35,7 +35,7 @@
     <script src="/scripts/vendors.min.js?v=<?=$dt?>"></script>
     <script src="/scripts/apps.min.js?v=<?=$dt?>"></script>
     
-    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kanit:300,400,500" rel="stylesheet">
 
   </body>
 </html>
