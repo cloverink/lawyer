@@ -1,0 +1,60 @@
+body[data-template="home"] {
+  main {
+    .home-section {
+      width: 100%;
+      display: table;
+      table-layout: fixed;
+      border-spacing: 20px;
+      border-collapse: separate;
+      >div {
+        display: table-cell;
+        border-radius: 100%;
+        background: red;
+        transition: all .3s ease;
+        &:hover {
+          transform: scale(1.05);
+        }
+        >img {
+          width: 100%;
+          visibility: hidden;
+        }
+        &:nth-child(1) {
+          background: url(/images/lawyer/lawyer1.jpg) center top no-repeat;
+          background-size: 100%;
+        }
+        &:nth-child(2) {
+          background: url(/images/lawyer/lawyer2.jpg) center top no-repeat;
+          background-size: 100%;
+        }
+        &:nth-child(3) {
+          border-radius: 0;
+          background: transparent;
+          text-align: center;
+          font-size: 20px;
+          font-weight: 300;
+          color: #3F51B5;
+          vertical-align: bottom;
+          transition: none;
+          &:hover {
+            transform: none;
+          }
+        }
+        &:nth-child(4) {
+          background: url(/images/lawyer/lawyer3.jpg) center top no-repeat;
+          background-size: 100%;
+        }
+        &:nth-child(5) {
+          background: url(/images/lawyer/lawyer4.jpg) center top no-repeat;
+        }
+      }
+    }
+    div.dvFooter {
+      text-align: center;
+      margin-top: 200px;
+      #lnkConsule {
+        border-radius: 20px;
+        margin: 0 auto;
+      }
+    }
+  } //main
+}
