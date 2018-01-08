@@ -1,5 +1,5 @@
 <header>
-
+<a id="lnkHome" href="/"></a>
 <nav>
   <a href="/consult">ปรึกษาทนาย</a>
   <a href="/lawyer">ทนายที่ปรึกษา</a>
