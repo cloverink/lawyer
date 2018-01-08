@@ -1,10 +1,10 @@
 <?php
 
-$fullname = P("fullname");
-$username = P("username");
-$password = P("username");
-$email = P("email");
-$tel = P("tel");
+$fullname = PP("fullname");
+$username = PP("username");
+$password = PP("username");
+$email = PP("email");
+$tel = PP("tel");
 
 if(!empty($fullname)
 && !empty($username)
