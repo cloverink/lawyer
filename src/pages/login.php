@@ -1,7 +1,5 @@
 <?php
 
-
-
 $username = PP("username");
 $password = PP("password");
 
@@ -13,8 +11,8 @@ if(!empty($username)
   $res = $conn->query($sql);
   if($res->num_rows == 1) {
     $row = $res->fetch_assoc();
-    $_SESSION["login"] == true;
-    $_SESSION["user"] == $row;
+    $_SESSION["login"] = true;
+    $_SESSION["user"] = $row;
     header('Location: /');
     exit();
   } else {

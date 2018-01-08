@@ -8,10 +8,10 @@ array_shift($url_flagment);
 $template_path = join("/", $url_flagment);
 $template_name = str_replace("/", "-", $template_path);
 
-if(!isLogon()) {
-  include("pages/login.php");
-  exit;
-}
+// if(!isLogon()) {
+//   include("pages/login.php");
+//   exit;
+// }
 
 if (empty($template_name)) {
   $template_name = $template_path = "home";
