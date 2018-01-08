@@ -9,7 +9,7 @@ var Login = (function (self) {
     $password = $("#password");
 
     $frmLogin.on("submit", function() {
-      $frmLogin.find(".alert").addClass("hide");
+      $alert.addClass("hide");
       if($.trim($username.val()) === "" 
       || $.trim($password.val()) === "") {
         $alert.text("กรุณากรอกข้อมูลให้ครบ");
