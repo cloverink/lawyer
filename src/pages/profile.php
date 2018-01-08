@@ -16,7 +16,6 @@ $type = $res->fetch_assoc();
 
 ?>
 <div class="profile-container">
-
   <h3>Profile</h3>
   <div class="profile-body">
     <div class="avt" style="background-image: url('/<?=$user["avt"]?>')"></div>

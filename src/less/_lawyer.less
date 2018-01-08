@@ -1,0 +1,62 @@
+body[data-template="lawyer"] {
+  h3 {
+    text-align: center;
+    font-weight: 300;
+    color: #3F51B5;
+  }
+  .lawyer-container {
+    .lawyer-list {
+      width: 80%;
+      margin: 0 auto;
+      .lawyer {
+        display: table;
+        border-spacing: 20px;
+        border-collapse: separate;
+        width: 50%;
+        float: left;
+        >div {
+          display: table-cell;
+          &.avt {
+            width: 35%;
+            background-size: 100%;
+            background-position: center top;
+            border-radius: 100%;
+            img {
+              width: 100%;
+            }
+          }
+          &.desc {
+            vertical-align: top;
+            .name {
+              line-height: 20px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .lawyer-desc {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+
+    .avt {
+      width: 20%;
+      margin: 20px auto 0;
+      background-size: 100%;
+      background-position: center top;
+      border-radius: 100%;
+      img {
+        width: 100%;
+      }
+    }
+
+    .name {
+      font-size: 30px;
+      font-weight: 300;
+      padding: 10px 0;
+    }
+
+  }
+}
