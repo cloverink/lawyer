@@ -3,9 +3,7 @@ var Main = (function (self) {
   var fn = {};
 
   fn.initMenu = function () {
-    $("#lnkBurger").on("click", function () {
-      $(this).toggleClass("actived");
-    });
+  
   };
 
   my.init = function () {

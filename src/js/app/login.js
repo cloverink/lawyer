@@ -3,23 +3,25 @@ var Login = (function (self) {
 
   fn.init = function () {
 
-    $inpAnswer = $("#inpAnswer");
-    $inpAnswer.on("keypress", function(e) {
-      if (e.keyCode == 13) fn.submit();
-    });
-    $inpAnswer.focus();
-    $("#btnSubmit").on("click", fn.submit);
-  };
-
-  fn.submit = function () {
     $frmLogin = $("#frmLogin");
-    $frmLogin.find("input[name='pass']").val($("#inpAnswer").val());
-    $frmLogin.submit();
-  }
+    $alert = $frmLogin.find(".alert")
+    $username = $("#username");
+    $password = $("#password");
+
+    $frmLogin.on("submit", function() {
+      $frmLogin.find(".alert").addClass("hide");
+      if($.trim($username.val()) === "" 
+      || $.trim($password.val()) === "") {
+        $alert.text("กรุณากรอกข้อมูลให้ครบ");
+        $alert.removeClass("hide");
+        return false;
+      }
+    });
+  };
 
   my.init = function () {
     $(function () {
-      if($("body#login").length) fn.init();
+      if($("#frmLogin").length) fn.init();
     })
   };
 

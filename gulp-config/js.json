@@ -14,7 +14,8 @@
     "watch_path": "./src/js/**/*.js",
     "tmp_path": "./tmp/",
     "file_list": [
-      "src/js/app/main.js"
+      "src/js/app/main.js",
+      "src/js/app/login.js"
     ]
   }
 }
