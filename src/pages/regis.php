@@ -25,7 +25,7 @@ if(!empty($fullname)
       umask($oldmask);
     endif;
     
-    $target_file = $folder_upload . "/" . $time() . "-" . $_FILES["avt"]["name"];
+    $target_file = $folder_upload . "/" . time() . "-" . $_FILES["avt"]["name"];
     move_uploaded_file($_FILES["avt"]["tmp_name"], $target_file);
 
     $avt = $target_file;
