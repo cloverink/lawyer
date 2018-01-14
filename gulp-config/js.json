@@ -4,7 +4,7 @@
     "target_filename": "vendors.js",
     "tmp_path": "./tmp/",
     "file_list": [
-      "node_modules/jquery/jquery.min.js",
+      "node_modules/jquery/dist/jquery.min.js",
       "node_modules/bootstrap/dist/js/bootstrap.min.js"
     ]
   },
@@ -16,8 +16,7 @@
     "file_list": [
       "src/js/app/main.js",
       "src/js/app/login.js",
-      "src/js/app/regis.js",
-      "src/js/app/admin.js"
+      "src/js/app/resig.js"
     ]
   }
 }

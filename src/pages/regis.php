@@ -47,58 +47,35 @@ if(G("status") == "completed") {
 }
 ?>
 
-<form id="frmRegis" class="form-horizontal" method="post" enctype="multipart/form-data">
+<form id="frmRegis" class="form-horizontal" method="post" enctype="multipart/form-data" autocomplete="off">
   <div class="alert alert-danger hide" role="alert"></div>
-  <h3>สมัครสมาชิก</h3>
+  <h3>Register Yourself</h3>
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">Full Name</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Full Name">
-    </div>
+    <label class="control-label">Name</label>
+    <input type="text" class="form-control" id="name" name="name" placeholder="Name">
   </div>
   <div class="form-group">
-    <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="username" name="username" placeholder="Username">
-    </div>
+    <label class="control-label">Email</label>
+    <input type="text" class="form-control" id="email" name="email" placeholder="Email">
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
-    <div class="col-sm-8">
-      <input type="password" class="form-control" id="password" name="password" placeholder="Password">
-    </div>
+    <label class="control-label">Password</label>
+    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-3 control-label">Confirm Password</label>
-    <div class="col-sm-8">
-      <input type="password" class="form-control" id="password2" name="password2" placeholder="Confirm Password">
-    </div>
+    <label class="control-label">Confirm Password</label>
+    <input type="password" class="form-control" id="pwd2" name="pwd2" placeholder="Confirm Password">
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-3 control-label">Email</label>
-    <div class="col-sm-8">
-      <input type="text" class="form-control" id="email" name="email" placeholder="Email">
-    </div>
+    <label class="control-label">Tel.</label>
+    <input type="tel" class="form-control" id="tel" name="tel" placeholder="Telephone">
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-3 control-label">Tel.</label>
-    <div class="col-sm-8">
-      <input type="tel" class="form-control" id="tel" name="tel" placeholder="Telephone">
-    </div>
+    <label class="control-label">Avatar</label>
+    <input type="file" name="avt" id="avt">
   </div>
   <div class="form-group">
-    <label for="inputPassword3" class="col-sm-3 control-label">Avatar</label>
-    <div class="col-sm-8">
-      <input type="file" name="avt" id="avt">
-    </div>
-  </div>
-
-
-
-  <div class="form-group">
-    <div class="col-sm-offset-3 col-sm-8">
-      <button type="submit" class="btn btn-primary">สมัครสามาชิก</button>
-      <a href="/login" class="btn pull-right">เข้าสู่ระบบ</a>
-    </div>
+    <button type="submit" class="btn btn-primary">Register</button>
+    <button type="reset" class="btn btn-danger">Reset</button>
   </div>
 </form>

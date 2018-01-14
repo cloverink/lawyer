@@ -3,6 +3,7 @@ var Regis = (function (self) {
 
   fn.init = function () {
 
+
     $frmRegis = $("#frmRegis");
     $alert = $frmRegis.find(".alert")
     $fullname = $("#fullname");
@@ -46,6 +47,7 @@ var Regis = (function (self) {
   };
 
   my.init = function () {
+    console.log(123)
     $(function () {
       if ($("#frmRegis").length) fn.init();
     })

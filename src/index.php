@@ -22,7 +22,7 @@
 
   </head>
   
-  <body data-template="<?=$template_name?>">
+  <body class="template-<?=$template_name?>">
 
   <?php include "partials/header.php" ?>
 

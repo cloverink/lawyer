@@ -8,11 +8,6 @@ array_shift($url_flagment);
 $template_path = join("/", $url_flagment);
 $template_name = str_replace("/", "-", $template_path);
 
-// if(!isLogon()) {
-//   include("pages/login.php");
-//   exit;
-// }
-
 if (empty($template_name)) {
   $template_name = $template_path = "home";
 }
@@ -26,4 +21,9 @@ $target_file = "pages/" . $template_path . ".php";
 
 if (!file_exists($target_file)) {
   $target_file = "pages/error/404.php";
+}
+
+$page_needlogin = array("home","lawyer");
+if(!isLogon() && in_array($template_path, $page_needlogin)) {
+  header("Location: login");
 }

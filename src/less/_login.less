@@ -1,17 +1,42 @@
-body[data-template="login"] {
+body.template-login {
+
   #frmLogin {
-    width: 50%;
-    margin: 20px auto 0;
+    max-width: 400px;
+    margin: 100px auto 0;
+
+    .form-group {
+      margin-bottom: 0;
+      &.foot {
+        margin-top: 20px;
+        text-align: center;
+        font-weight: 300;
+      }
+    }
+
+    .form-control {
+      border-radius: 0;
+      padding: 20px;
+    }
+
     h3 {
       font-weight: 300;
       text-align: center;
       margin: 0 auto;
       padding: 20px 0;
-      color: #3F51B5;
+      color: #777;
     }
 
-    label {
+
+    button[type="submit"] {
+      width: 100%;
+      text-transform: uppercase;
       font-weight: 300;
+      border-radius: 0;
+      padding: 10px;
+      margin-top: 10px;
     }
+
+
+
   }
 }

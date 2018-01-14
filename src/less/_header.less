@@ -1,43 +1,24 @@
 header {
   width: 100%;
-  max-width: 1200px;
-  background: red;
-  margin: 0 auto 0;
-  min-height: 100px;
-  background: url('/images/icon.png') 0 10px no-repeat;
-  background-size: 140px;
-  padding: 20px 0 20px 150px;
-  position: relative;
+  background: #eee;
+
   nav {
-    width: 100%;
-    display: table;
-    table-layout: fixed;
+    height: 100px;
+    .icon > img {
+      height: 60px;
+      margin: 20px;
+    }
+
     a {
-      display: table-cell;
-      text-align: center;
-      display: table-cell;
-      text-align: center;
-      font-size: 30px;
-      line-height: 100px;
-      font-weight: 300;
+      display: inline-block;
+      margin-left: 50px;
       text-decoration: none;
-      transition: all .3s ease;
-      color: #2196F3;
+      font-size: 23px;
+      font-weight: 300;
+
       &:hover {
         text-decoration: none;
-        color: #3F51B5;
-      }
-      &.actived {
-        color: #999;
       }
     }
-  } //nav
-
-  #lnkHome {
-    position: absolute;
-    width: 140px;
-    height: 140px;
-    left: 0;
-    top: 0;
   }
 }
