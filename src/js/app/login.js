@@ -5,14 +5,21 @@ var Login = (function (self) {
 
     $frmLogin = $("#frmLogin");
     $alert = $frmLogin.find(".alert")
-    $username = $("#username");
-    $password = $("#password");
+    $email = $("#email");
+    $pwd = $("#pwd");
 
     $frmLogin.on("submit", function() {
       $alert.addClass("hide");
-      if($.trim($username.val()) === "" 
-      || $.trim($password.val()) === "") {
+      if($.trim($email.val()) === "" 
+      || $.trim($pwd.val()) === "") {
         $alert.text("กรุณากรอกข้อมูลให้ครบ");
+        $alert.removeClass("hide");
+        return false;
+      }
+
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      if (!re.test($email.val().toLowerCase())) {
+        $alert.text("email ไม่ถูกต้อง");
         $alert.removeClass("hide");
         return false;
       }

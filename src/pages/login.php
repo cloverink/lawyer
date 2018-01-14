@@ -1,13 +1,15 @@
 <?php
 
-$username = PP("username");
-$password = PP("password");
+$email = PP("email");
+$pwd = PP("pwd");
 
-if(!empty($username)
-&& !empty($password)) {
+if(!empty($email)
+&& !empty($pwd)) {
 
-  $pwd = md5($username . $password);
-  $sql = "select * from user where username = '$username' and password = '$pwd'";
+  echo 123;
+
+  $pwd = md5($email . $pwd);
+  $sql = "select * from user where email = '$email' and pwd = '$pwd'";
   $res = $conn->query($sql);
   if($res->num_rows == 1) {
     $row = $res->fetch_assoc();
@@ -34,7 +36,7 @@ if(G("status") == "uncompleted") {
     <input type="text" class="form-control" id="email" name="email" placeholder="Email">
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+    <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
   </div>
   <div class="form-group">
     <button type="submit" class="btn btn-primary">sign in</button>
