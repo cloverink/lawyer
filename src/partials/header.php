@@ -15,5 +15,8 @@ function getActiveMenu($name) {
 <a href="/pay">ค่าใช้จ่าย</a>
 <? endif; ?>
 <a href="/about">เกี่ยวกับเรา</a>
+<? if(isLogon()): ?>
+<a href="/profile" class="pull-right">ข้อมูลส่วนตัว</a>
+<? endif; ?>
 </nav>
 </header>

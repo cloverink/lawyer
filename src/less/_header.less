@@ -4,20 +4,28 @@ header {
 
   nav {
     height: 100px;
-    .icon > img {
-      height: 60px;
-      margin: 20px;
+    .icon {
+      margin: 0;
+      > img {
+        height: 60px;
+        margin: 20px;
+      }
     }
 
     a {
-      display: inline-block;
+      float: left;
+      margin-top: 35px;
       margin-left: 50px;
       text-decoration: none;
-      font-size: 23px;
+      font-size: 20px;
       font-weight: 300;
 
       &:hover {
         text-decoration: none;
+      }
+
+      &:last-child {
+        margin-right: 20px;
       }
     }
   }
