@@ -6,18 +6,16 @@ var Regis = (function (self) {
 
     $frmRegis = $("#frmRegis");
     $alert = $frmRegis.find(".alert")
-    $fullname = $("#fullname");
-    $username = $("#username");
-    $password = $("#password");
-    $password2 = $("#password2");
+    $name = $("#name");
+    $password = $("#pwd");
+    $password2 = $("#pwd2");
     $email = $("#email");
     $tel = $("#tel");
 
     $frmRegis.on("submit", function() {
       $alert.addClass("hide");
 
-      if($.trim($fullname.val()) === ""
-      || $.trim($username.val()) === ""
+      if($.trim($name.val()) === ""
       || $.trim($password.val()) === ""
       || $.trim($password2.val()) === ""
       || $.trim($email.val()) === ""
@@ -47,7 +45,6 @@ var Regis = (function (self) {
   };
 
   my.init = function () {
-    console.log(123)
     $(function () {
       if ($("#frmRegis").length) fn.init();
     })

@@ -1,17 +1,18 @@
 <?php
 
-$fullname = PP("fullname");
-$username = PP("username");
-$password = PP("username");
+$name = PP("name");
+$pwd = PP("pwd");
 $email = PP("email");
 $tel = PP("tel");
+$role = PP("role");
 
-if(!empty($fullname)
-&& !empty($username)
-&& !empty($password)
+if(!empty($name)
+&& !empty($pwd)
 && !empty($email)
 && !empty($tel)
 ){
+
+  echo $role;
 
   $avt = "";
   if(!empty($_FILES["avt"]["name"])){
@@ -31,8 +32,14 @@ if(!empty($fullname)
     $avt = $target_file;
   }
 
-  $pwd = md5($username . $password);
-  $sql = "insert into user(username, password, email, tel, name, avt) value('$username','$pwd','$email','$tel','$fullname','$avt')";
+  $sql = "select id from user_type where name = '$role'";
+  $res = $conn->query($sql);
+  $o = $res->fetch_assoc();
+  $type = $o["id"];
+
+
+  $pwd = md5($email . $pwd);
+  $sql = "insert into user(name, email, pwd, tel, avt , type) value('$name','$email','$pwd','$tel','$avt', $type)";
   $result = $conn->query($sql);
 
   if($result) {
@@ -50,6 +57,14 @@ if(G("status") == "completed") {
 <form id="frmRegis" class="form-horizontal" method="post" enctype="multipart/form-data" autocomplete="off">
   <div class="alert alert-danger hide" role="alert"></div>
   <h3>Register Yourself</h3>
+  <div class="form-group">
+    <label class="radio-inline">
+      <input type="radio" name="role" id="user" value="user" checked="checked"> User
+    </label>
+    <label class="radio-inline">
+      <input type="radio" name="role" id="lawyer" value="lawyer"> Lawyer
+    </label>
+  </div>
   <div class="form-group">
     <label class="control-label">Name</label>
     <input type="text" class="form-control" id="name" name="name" placeholder="Name">
