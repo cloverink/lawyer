@@ -62,7 +62,9 @@ $avt = empty($user["avt"])? "images/user-default.png" : $user["avt"];
 <div class="profile-container">
   <h3>Profile</h3>
   <div class="profile-body">
-    <div class="avt" style="background-image: url('/<?=$avt?>')"></div>
+    <div class="avt" style="background-image: url('/<?=$avt?>')">
+      <img src="/images/1x1.png">
+    </div>
     <div class="desc">
       <?php 
       if($action == "edit") {
