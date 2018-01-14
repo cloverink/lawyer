@@ -16,6 +16,42 @@ $row = $res->fetch_assoc();
 $_SESSION["user"] = $row;
 $user = $_SESSION["user"];
 
+if($action == "update"):
+
+  $name = PP("name");
+  $tel = PP("tel");
+  $address = PP("address");
+
+
+  if(!empty($name)
+  && !empty($tel)) {
+
+    $avt = $user["avt"];
+    if(!empty($_FILES["avt"]["name"])){
+
+      $folder_dt = date("Ymd");
+      $folder_upload = "uploads/" . $folder_dt;
+
+      if (!file_exists($folder_upload)):
+        $oldmask = umask(0);
+        mkdir($folder_upload, 0777, true);
+        umask($oldmask);
+      endif;
+      
+      $target_file = $folder_upload . "/" . time() . "-" . $_FILES["avt"]["name"];
+      move_uploaded_file($_FILES["avt"]["tmp_name"], $target_file);
+
+      $avt = $target_file;
+    }
+
+    $sql = "update user set name='$name', tel='$tel', address='$address', avt='$avt' where id = $userid";
+    $result = $conn->query($sql);
+    header('Location: /profile');
+    exit();
+  }
+
+endif;
+
 
 $sql = "select * from user_type where id = " . $user["type"];
 $res = $conn->query($sql);
@@ -31,11 +67,13 @@ $avt = empty($user["avt"])? "images/user-default.png" : $user["avt"];
       <?php 
       if($action == "edit") {
       ?>
-      <form>
-        <div class="form-group">Name: <input type=""></div>
-        <div class="form-group">Email:  <input type=""></div>
-        <div class="form-group">Tel:  <input type=""></div>
-        <div>Address: <br><textarea></textarea></div>
+      <form action="/profile?action=update" method="post" enctype="multipart/form-data" >
+        <input type="hidden" name="userid" value="<?=$userid?>">
+        <div class="form-group">Name: <input type="text" class="form-control" name="name" value="<?=$user["name"]?>"></div>
+        <div class="form-group">Tel:  <input type="tel" class="form-control" name="tel" value="<?=$user["tel"]?>"></div>
+        <div class="form-group">Address: <textarea class="form-control" name="address"><?=$user["address"]?></textarea></div>
+        <div class="form-group">Image:  <input type="file" name="avt" id="avt"></div>
+        <button type="submit" class="btn btn-warning">บันทึก</button>
       </form>
       <?php
       } else {
@@ -53,20 +91,11 @@ $avt = empty($user["avt"])? "images/user-default.png" : $user["avt"];
   </div>
 
   <div class="profile-footer">
-    <?php 
-      if($action == "edit") {
-    ?>
-    <a class="btn btn-warning" href="/profile" role="button">บันทึก</a>
-    <?php
-      } else {
-    ?>
+    <?php if($action == "edit") { ?>
+    <?php } else { ?>
     <a class="btn btn-primary" href="/profile?action=edit" role="button">แก้ไข</a>
-    <?php
-      }
-    ?>
-    
-
     <a class="btn btn-success" href="/topup" role="button">เติมเงิน</a>
     <a class="btn btn-default" href="/logout" role="button">ออกจากระบบ</a>
+    <?php } ?>
   </div>
 </div>
