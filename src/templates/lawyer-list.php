@@ -1,4 +1,6 @@
 <?php
+$user = S('user');
+
 $sql = "select * from user where type = 1";
 $res = $conn->query($sql);
 ?>

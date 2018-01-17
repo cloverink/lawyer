@@ -21,7 +21,11 @@ if($action == "update"):
   $name = PP("name");
   $tel = PP("tel");
   $address = PP("address");
-
+  
+  $type = PP("type");
+  $education = PP("education");
+  $skill = PP("skill");
+  $experience = PP("experience");
 
   if(!empty($name)
   && !empty($tel)) {
@@ -46,9 +50,29 @@ if($action == "update"):
 
     $sql = "update user set name='$name', tel='$tel', address='$address', avt='$avt' where id = $userid";
     $result = $conn->query($sql);
+
+
+
+    $sql = "select count(*) as cnt from lawyer where userid = $userid";
+    $res = $conn->query($sql);
+    $row = $res->fetch_assoc();
+
+    if(intval($row["cnt"]) == 0 ) {
+      $sql = "insert into lawyer(userid, edu, skill, exp) value($userid, '$education','$skill','$experience')";
+      $res = $conn->query($sql);
+    } else {
+      $sql = "update lawyer set edu='$education', skill='$skill', exp='$experience' where userid = $userid";
+      $res = $conn->query($sql);
+    }
+
     header('Location: /profile');
     exit();
+
   }
+
+
+
+
 
 endif;
 
@@ -58,6 +82,9 @@ $res = $conn->query($sql);
 $type = $res->fetch_assoc();
 $avt = empty($user["avt"])? "images/user-default.png" : $user["avt"];
 
+$res = $conn->query("select * from lawyer where userid = " . $user["id"]);
+$lawyer = $res->fetch_assoc();
+
 ?>
 <div class="profile-container">
   <h3>Profile</h3>
@@ -66,28 +93,39 @@ $avt = empty($user["avt"])? "images/user-default.png" : $user["avt"];
       <img src="/images/1x1.png">
     </div>
     <div class="desc">
-      <?php 
-      if($action == "edit") {
-      ?>
+      <?php if($action == "edit") { ?>
       <form action="/profile?action=update" method="post" enctype="multipart/form-data" >
         <input type="hidden" name="userid" value="<?=$userid?>">
+        <input type="hidden" name="type" value="<?=$type["name"]?>">
         <div class="form-group">Name: <input type="text" class="form-control" name="name" value="<?=$user["name"]?>"></div>
         <div class="form-group">Tel:  <input type="tel" class="form-control" name="tel" value="<?=$user["tel"]?>"></div>
         <div class="form-group">Address: <textarea class="form-control" name="address"><?=$user["address"]?></textarea></div>
+
+        <?php if($type["name"] == "lawyer") { ?>
+        <div class="form-group">Education: <textarea class="form-control" name="education"><?=$lawyer["edu"]?></textarea></div>
+        <div class="form-group">Skill: <textarea class="form-control" name="skill"><?=$lawyer["skill"]?></textarea></div>
+        <div class="form-group">Experience: <textarea class="form-control" name="experience"><?=$lawyer["exp"]?></textarea></div>
+        <?php } ?>
+
         <div class="form-group">Image:  <input type="file" name="avt" id="avt"></div>
+
         <button type="submit" class="btn btn-warning">บันทึก</button>
       </form>
-      <?php
-      } else {
-      ?>
+      
+      <?php } else { ?>
+
       <div>Name: <span><?=$user["name"]?></span></div>
       <div>Email: <span><?=$user["email"]?></span></div>
       <div>Tel: <span><?=$user["tel"]?></span></div>
       <div>Address: <span><?=$user["address"]?></span></div>
       <div>Type: <span><?=$type["name"]?></span></div>
-      <?php
-      }
-      ?>
+        <?php if($type["name"] == "lawyer") { ?>
+          <br>
+          <div>Education: <span><?=$lawyer["edu"]?></span></div>
+          <div>Skill: <span><?=$lawyer["skill"]?></span></div>
+          <div>Experience: <span><?=$lawyer["exp"]?></span></div>
+        <?php } ?>
+      <?php } ?>
 
     </div>
   </div>
