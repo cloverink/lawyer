@@ -10,6 +10,8 @@ $avt = empty($o["avt"])? "images/user-default.png" : $o["avt"];
 $res = $conn->query("select * from lawyer where userid = " . $o["id"]);
 $lawyer = $res->fetch_assoc();
 
+$id = $o["id"];
+
 ?>
 
 
@@ -31,8 +33,8 @@ $lawyer = $res->fetch_assoc();
         <i class="fa fa-circle" aria-hidden="true"></i> Online
       </div>
       <div class="action">
-        <a class="btn btn-primary" href="/lawyer?consult=<?=$id?>">ปรึกษาทนาย</a>
-        <a class="btn btn-primary" href="/lawyer?book=<?=$id?>">จองคิว</a>
+        <a class="btn btn-primary" href="/>">ปรึกษาทนาย</a>
+        <a class="btn btn-primary" href="/book?id=<?=$id?>">จองคิว</a>
       </div>
     </div>
   </div>
