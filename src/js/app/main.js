@@ -2,13 +2,17 @@ var Main = (function (self) {
   var my = self;
   var fn = {};
 
-  fn.initMenu = function () {
-  
-  };
+
+  fn.init = function() {
+    $('#datetimepicker12').datetimepicker({
+      inline: false,
+      sideBySide: true
+    });
+  }
 
   my.init = function () {
     $(function () {
-      fn.initMenu();
+      fn.init();
     })
   };
 

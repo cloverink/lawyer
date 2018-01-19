@@ -6,7 +6,8 @@
     "file_list": [
       "node_modules/jquery/dist/jquery.min.js",
       "node_modules/bootstrap/dist/js/bootstrap.min.js",
-      "node_modules/moment/min/moment.min.js"
+      "node_modules/moment/min/moment.min.js",
+      "src/js/vendors/bootstrap-datetimepicker.min.js"
     ]
   },
   "apps": {
@@ -17,7 +18,8 @@
     "file_list": [
       "src/js/app/main.js",
       "src/js/app/login.js",
-      "src/js/app/regis.js"
+      "src/js/app/regis.js",
+      "src/js/app/book.js"
     ]
   }
 }
