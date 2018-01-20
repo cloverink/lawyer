@@ -42,7 +42,13 @@ if(!empty($name)
   $sql = "insert into user(name, email, pwd, tel, avt , type) value('$name','$email','$pwd','$tel','$avt', $type)";
   $result = $conn->query($sql);
 
-  
+  if($type == 1) {
+    $sql = "select max(id) as id from user";
+    $res = $conn->query($sql);
+    $row = $res->fetch_assoc();
+    $sql = "insert into lawyer(userid) value(".$row["id"].")";
+    $res = $conn->query($sql);
+  }
 
   if($result) {
     header('Location: /regis?status=completed');

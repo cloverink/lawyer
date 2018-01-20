@@ -10,6 +10,10 @@ $res = $conn->query($sql);
 
 $id = $o["id"];
 $avt = empty($o["avt"])? "images/user-default.png" : $o["avt"];
+
+
+
+
 ?>
 
 <div class="lawyer">
@@ -33,7 +37,7 @@ $avt = empty($o["avt"])? "images/user-default.png" : $o["avt"];
       <a class="btn btn-primary" href="/lawyer?consult=<?=$id?>">ปรึกษาทนาย</a>
 
       <a class="btn btn-primary" href="/lawyer?book=<?=$id?>">จองคิว</a>
-      
+
     </div>
   </div>
 </div>
