@@ -48,10 +48,6 @@ if(!empty($name)
   }
 
 }
-
-if(G("status") == "completed") {
-  echo '<div class="alert alert-success" role="alert">สมัครเสร็จสมบูรณ์</div>';
-}
 ?>
 
 <!-- dashboard -->
@@ -59,7 +55,11 @@ if(G("status") == "completed") {
   <a class="breadcrumb-item" href="/">Home</a>
   <span class="breadcrumb-item active">Regis</span>
 </nav>
-
+<?php
+if(G("status") == "completed") {
+  echo '<div class="alert alert-success" role="alert">สมัครเสร็จสมบูรณ์</div>';
+}
+?>
 <form id="frmRegis" class="form-horizontal" method="post" enctype="multipart/form-data" autocomplete="off">
   <div class="alert alert-danger hide" role="alert"></div>
   <h3>Register Yourself</h3>

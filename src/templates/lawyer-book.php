@@ -37,6 +37,11 @@ $id = $o["id"];
       <div class="status">
         <i class="fa fa-circle" aria-hidden="true"></i> Online
       </div>
+
+      <div class="price"><?=$lawyer["price"]?></div>
+
+
+
       <div class="action">
         <a class="btn btn-primary" href="/lawyer?consult=<?=$id?>">ปรึกษาทนาย</a>
         <a class="btn btn-primary" href="/book?id=<?=$id?>">จองคิว</a>
