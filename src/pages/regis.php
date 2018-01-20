@@ -42,6 +42,8 @@ if(!empty($name)
   $sql = "insert into user(name, email, pwd, tel, avt , type) value('$name','$email','$pwd','$tel','$avt', $type)";
   $result = $conn->query($sql);
 
+  
+
   if($result) {
     header('Location: /regis?status=completed');
     exit();

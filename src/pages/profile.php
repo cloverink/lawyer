@@ -136,7 +136,9 @@ $lawyer = $res->fetch_assoc();
     <?php if($action == "edit") { ?>
     <?php } else { ?>
     <a class="btn btn-primary" href="/profile?action=edit" role="button">แก้ไข</a>
+    <?php if($type["name"] != "lawyer") { ?>
     <a class="btn btn-success" href="/topup" role="button">เติมเงิน</a>
+    <?php } ?>
     <a class="btn btn-default" href="/logout" role="button">ออกจากระบบ</a>
     <?php } ?>
   </div>

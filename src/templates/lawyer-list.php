@@ -31,7 +31,9 @@ $avt = empty($o["avt"])? "images/user-default.png" : $o["avt"];
     <div class="action">
       <a class="btn btn-primary" href="/lawyer?profile=<?=$id?>">ข้อมูลส่วนตัว</a>
       <a class="btn btn-primary" href="/lawyer?consult=<?=$id?>">ปรึกษาทนาย</a>
+
       <a class="btn btn-primary" href="/lawyer?book=<?=$id?>">จองคิว</a>
+      
     </div>
   </div>
 </div>
