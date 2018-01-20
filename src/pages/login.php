@@ -29,6 +29,7 @@ if(G("status") == "uncompleted") {
 }
 
 ?>
+
 <form id="frmLogin" class="form-horizontal" method="post" autocomplete="off">
   <div class="alert alert-danger hide" role="alert"></div>
   <h3>Account Login</h3>

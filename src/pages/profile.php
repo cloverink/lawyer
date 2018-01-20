@@ -86,6 +86,11 @@ $res = $conn->query("select * from lawyer where userid = " . $user["id"]);
 $lawyer = $res->fetch_assoc();
 
 ?>
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" href="/">Home</a>
+  <span class="breadcrumb-item active">Profile</span>
+</nav>
+
 <div class="profile-container">
   <h3>Profile</h3>
   <div class="profile-body">

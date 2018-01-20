@@ -12,7 +12,6 @@ function getActiveMenu($name) {
 <a href="/">หน้าหลัก</a>
 <? if(isLogon()): ?>
 <a href="/lawyer">ทนายของเรา</a>
-<a href="/pay">ค่าใช้จ่าย</a>
 <? endif; ?>
 <a href="/about">เกี่ยวกับเรา</a>
 <? if(isLogon()): ?>

@@ -41,6 +41,14 @@ elseif($status == "incompleted"):
 endif;
 
 ?>
+
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" href="/">Home</a>
+  <a class="breadcrumb-item" href="/lawyer">ทนายของเรา</a>
+  <a class="breadcrumb-item" href="/lawyer?book=<?=$id?>">จองคิว</a>
+  <span class="breadcrumb-item active">ลงเวลา</span>
+</nav>
+
 <div id="bookAlert" class="alert alert-danger hide"></div>
 <section class="lawyer-book">
   <div>

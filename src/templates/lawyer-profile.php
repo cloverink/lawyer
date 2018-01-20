@@ -1,6 +1,6 @@
 <?php
 
-$sql = "select * from user where id=$book";
+$sql = "select * from user where id=$profile";
 $res = $conn->query($sql);
 $o = $res->fetch_assoc();
 
@@ -18,7 +18,6 @@ $id = $o["id"];
   <a class="breadcrumb-item" href="/lawyer">ทนายของเรา</a>
   <span class="breadcrumb-item active">ข้อมูลทนาย</span>
 </nav>
-
 
 <section class="lawyer-book">
   <div>

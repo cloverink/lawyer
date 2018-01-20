@@ -54,6 +54,12 @@ if(G("status") == "completed") {
 }
 ?>
 
+<!-- dashboard -->
+<nav class="breadcrumb">
+  <a class="breadcrumb-item" href="/">Home</a>
+  <span class="breadcrumb-item active">Regis</span>
+</nav>
+
 <form id="frmRegis" class="form-horizontal" method="post" enctype="multipart/form-data" autocomplete="off">
   <div class="alert alert-danger hide" role="alert"></div>
   <h3>Register Yourself</h3>
