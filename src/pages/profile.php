@@ -127,6 +127,9 @@ $lawyer = $res->fetch_assoc();
           <div>Skill: <span><?=$lawyer["skill"]?></span></div>
           <div>Experience: <span><?=$lawyer["exp"]?></span></div>
         <?php } ?>
+
+      <div class="topup">Money: <span><?=$user["topup"]?></span></div>
+
       <?php } ?>
 
     </div>
