@@ -6,6 +6,8 @@ $profile = G("profile");
 
 <?php if(!empty($book)):?>
 <?php include "templates/lawyer-book.php"; ?>
+<?php elseif(!empty($consult)): ?>
+<?php include "templates/lawyer-consult.php"; ?>
 <?php elseif(!empty($profile)): 
 $book = $profile  
 ?>
