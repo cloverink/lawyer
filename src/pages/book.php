@@ -8,9 +8,22 @@ if(!empty($bookid)) {
 
   $detail = PP("detail");
   $bookdt = PP("bookdt");
+
+  $hour = intval(PP("hour"));
+  $price = intval(PP("price"));
+  
+  $total = $price * $hour;
   
   $sql = "insert into book(uid, lawyerid, book, detail) value($userid, $bookid, STR_TO_DATE('$bookdt', '%d/%m/%Y %H:%i:%s'), '$detail')";
   $result = $conn->query($sql);
+
+  $sql = "update user set topup = topup - $total where id = $userid";
+  $result2 = $conn->query($sql);
+
+  $sql = "select * from user where id = $userid";
+  $res = $conn->query($sql);
+  $row = $res->fetch_assoc();
+  $_SESSION["user"] = $row;
 
   if($result) {
     header("Location: /book?id=$bookid&status=completed");
@@ -32,13 +45,7 @@ $lawyer = $res->fetch_assoc();
 
 $id = $o["id"];
 
-
-$status = G("status");
-if($status == "completed"):
-  echo '<div class="alert alert-success">จองเสร็จสมบูรณ์</div>';
-elseif($status == "incompleted"):
-  echo '<div class="alert alert-danger">กรุณาทำรายการใหม่</div>';
-endif;
+$user = S("user");
 
 ?>
 
@@ -48,6 +55,16 @@ endif;
   <a class="breadcrumb-item" href="/lawyer?book=<?=$id?>">จองคิว</a>
   <span class="breadcrumb-item active">ลงเวลา</span>
 </nav>
+
+<?php
+$status = G("status");
+if($status == "completed"):
+  echo '<div class="alert alert-success">จองเสร็จสมบูรณ์</div>';
+elseif($status == "incompleted"):
+  echo '<div class="alert alert-danger">กรุณาทำรายการใหม่</div>';
+endif;
+
+?>
 
 <div id="bookAlert" class="alert alert-danger hide"></div>
 <section class="lawyer-book">
@@ -77,7 +94,12 @@ endif;
   <div class="book-detail">
 
     <form method="post" id="frmBook" autocomplete="off">
+    
+
       <input type="hidden" value="<?=$id?>" name="book">
+      <input type="hidden" value="<?=$lawyer["price"]?>" name="price">
+      <input type="hidden" value="<?=$user["topup"]?>" name="topup">
+
       <div class="form-group">
         <label for="" class="col-sm-2 control-label">วันที่</label>
         <div class="col-sm-10">
@@ -92,6 +114,19 @@ endif;
         </div>
       </div>
       <div class="form-group">
+        <br><br>
+        <label for="" class="col-sm-2 control-label">ชั่วโมง</label>
+        <div class="col-sm-10">
+          <select class="form-control" name="hour">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+          </select>
+        </div>
+        <br><br>
+      </div>
+      <div class="form-group">
         <label for="" class="col-sm-2 control-label">ข้อความ</label>
         <div class="col-sm-10">
           <textarea class="form-control" rows="3" name="detail"></textarea>
@@ -100,6 +135,8 @@ endif;
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
           <br>
+          รวม <span class="sum"><?=$lawyer["price"]?></span> บาท ( เงินในบัญชีของคุณมี <span class="topup"><?=$user["topup"]?></span> บาท )
+          <br><br>
           <button type="submit" class="btn btn-success">จอง</button>
         </div>
       </div>
