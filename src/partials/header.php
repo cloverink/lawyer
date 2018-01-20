@@ -17,11 +17,20 @@ function getActiveMenu($name) {
 <?php
 $user = S("user");
 $userid = $user["id"];
-$sql = "select count(*) as cnt from book where uid = $userid";
-$res = $conn->query($sql);
-$row = $res->fetch_assoc();
-if(intval($row["cnt"]) > 0) {
-  echo "<a href='/calendar'>ตารางนัด</a>";
+if($user["type"] == 0) {
+  $sql = "select count(*) as cnt from book where uid = $userid";
+  $res = $conn->query($sql);
+  $row = $res->fetch_assoc();
+  if(intval($row["cnt"]) > 0) {
+    echo "<a href='/calendar'>ตารางนัดทนาย</a>";
+  }
+} elseif($user["type"] == 1) { //lawyer
+  $sql = "select count(*) as cnt from book where lawyerid = $userid";
+  $res = $conn->query($sql);
+  $row = $res->fetch_assoc();
+  if(intval($row["cnt"]) > 0) {
+    echo "<a href='/calendar'>ตารางนัดลูกค้า</a>";
+  }
 }
 ?>
 
