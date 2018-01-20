@@ -64,7 +64,9 @@ endif;
         <i class="fa fa-star" aria-hidden="true"></i>
         <i class="fa fa-star-o" aria-hidden="true"></i>
       </div>
-      <br>
+      <?php if(!empty($lawyer["price"])): ?>
+      <div class="price"><?=$lawyer["price"]?></div>
+      <?php endif; ?>
       <br>
       <div class="action">
         <a class="btn btn-primary" href="/lawyer?book=<?=$id?>">ข้อมูลส่วนตัว</a>

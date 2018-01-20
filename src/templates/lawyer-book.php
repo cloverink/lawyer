@@ -38,13 +38,18 @@ $id = $o["id"];
         <i class="fa fa-circle" aria-hidden="true"></i> Online
       </div>
 
+      <?php if(!empty($lawyer["price"])): ?>
       <div class="price"><?=$lawyer["price"]?></div>
-
-
+      <?php endif; ?>
 
       <div class="action">
+        <?php if(empty($lawyer["price"])): ?>
+        <a class="btn btn-primary" href="#!" disabled>ปรึกษาทนาย</a>
+        <a class="btn btn-primary" href="#!" disabled>จองคิว</a>
+        <?php else: ?>
         <a class="btn btn-primary" href="/lawyer?consult=<?=$id?>">ปรึกษาทนาย</a>
         <a class="btn btn-primary" href="/book?id=<?=$id?>">จองคิว</a>
+        <?php endif; ?>
       </div>
     </div>
   </div>
