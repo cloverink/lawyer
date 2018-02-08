@@ -19,7 +19,8 @@
       "src/js/app/main.js",
       "src/js/app/login.js",
       "src/js/app/regis.js",
-      "src/js/app/book.js"
+      "src/js/app/book.js",
+      "src/js/app/vdo.js"
     ]
   }
 }

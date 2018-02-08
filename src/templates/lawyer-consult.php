@@ -2,13 +2,19 @@
 $user = S('user');
 ?>
 
-<script src='https://html5-chat.com/script/2373/5a7b5a15df13d'></script>
+
 <div class="container">
 
-<!-- <iframe 
-  src="https://meet25491102.adobeconnect.com/test/?launcher=false" width="100%" height="100%">
-</iframe> -->
-<br>
+  <br><br>
+
+  <div class="videoContainer">
+    <video id="localVideo" oncontextmenu="return false;"></video>
+    <meter id="localVolume" class="volume" min="-45" max="-20" high="-25" low="-40"></meter>
+  </div>
+  <div id="localScreenContainer" class="videoContainer"></div>
+  <div id="remotes"></div>
+
+  <br><br>
 
 <form>
   <div class="form-group">
@@ -27,3 +33,6 @@ $user = S('user');
 </form>
 
 </div>
+
+<script src="https://webrtc.github.io/adapter/adapter-4.2.2.js"></script>
+<script src="https://simplewebrtc.com/latest-v3.js"></script>
