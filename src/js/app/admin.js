@@ -7,16 +7,19 @@ var Admin = (function (self) {
       if(confirm("ต้องการลบ ?"))
         return true;
       return false;
-    })
-   
+    });
+
   };
+
 
   my.init = function () {
     $(function () {
-      if($('body[data-template="admin"]').length) fn.init();
+      if ($('body.template-admin').length) fn.init();
     })
   };
 
   return my;
 
 })(Admin || {}).init();
+
+

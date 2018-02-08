@@ -7,6 +7,7 @@
       "node_modules/jquery/dist/jquery.min.js",
       "node_modules/bootstrap/dist/js/bootstrap.min.js",
       "node_modules/moment/min/moment.min.js",
+      "node_modules/chart.js/dist/Chart.js",
       "src/js/vendors/bootstrap-datetimepicker.min.js"
     ]
   },
@@ -21,7 +22,8 @@
       "src/js/app/regis.js",
       "src/js/app/book.js",
       "src/js/app/vdo.js",
-      "src/js/app/lawyer.js"
+      "src/js/app/lawyer.js",
+      "src/js/app/admin.js"
     ]
   }
 }

@@ -45,8 +45,9 @@ $res = $conn->query($sql);
 ?>
 
 
-
-
+<div class="" style="width: 50%; height: 300px;">
+<canvas id="myChart" ></canvas>
+</div>
 
 
 
@@ -77,10 +78,10 @@ $type = $r->fetch_assoc();
   <td><?=$o["tel"]?></td>
   <td><?=$type["name"]?></td>
   <td>
-    <a class="btn btn-primary btnEdit" href="/admin?edit=<?=$o["id"]?>" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+    <a class="btn btn-primary btn-xs btnEdit" href="/admin?edit=<?=$o["id"]?>" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
     <? if($o["type"] < 2): ?>
-    <a class="btn btn-danger btnDel" href="/admin?del=<?=$o["id"]?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    <a class="btn btn-danger btn-xs btnDel" href="/admin?del=<?=$o["id"]?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
     <? endif; ?>
 
   </td>
@@ -139,3 +140,69 @@ $r = $conn->query($sql);
 <?php
 endif;
 ?>
+
+
+<script>
+
+<?php
+
+//count user
+$user_count_name = array();
+$user_count_cnt = array();
+$sql = "select count(*) cnt, ut.name from user u inner join user_type ut on u.type = ut.id group by u.type";
+$res = $conn->query($sql);
+while($row = $res->fetch_assoc()) {
+  array_push($user_count_name, $row["name"]);
+  array_push($user_count_cnt, $row["cnt"]);
+}
+
+echo "var user_count_name = " . json_encode($user_count_name) . ";" . PHP_EOL;
+echo "var user_count_cnt = " . json_encode($user_count_cnt) . ";" . PHP_EOL;
+
+?>
+
+function wait() {
+  
+  if(typeof $ === "undefined" || typeof Chart === "undefined") {
+    setTimeout(() => {
+      wait();
+    }, 500);
+    return;
+  }
+
+  __DrawUserChart();
+
+}
+wait();
+
+
+function __DrawUserChart() {
+  var ctx = document.getElementById("myChart");
+    var myChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: user_count_name,
+        datasets: [{
+          label: '# ผู้ใช้ทั้งหมด',
+          data: user_count_cnt,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)'
+          ],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        scales: {
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        }
+      }
+    });
+}
+
+</script>
