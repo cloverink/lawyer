@@ -19,12 +19,12 @@ $user = S("user");
 $userid = $user["id"];
 $usertype = $user["type"];
 
-if($user["type"] == 0) {
+if($user["type"] != 1) {
   $sql = "select count(*) as cnt from book where uid = $userid";
   $res = $conn->query($sql);
   $row = $res->fetch_assoc();
   if(intval($row["cnt"]) > 0) {
-    echo "<a href='/calendar'>ตารางนัดทนาย</a>";
+    echo "<a href='/hiss'>ตารางนัดทนาย</a>";
   }
 } elseif($user["type"] == 1) { //lawyer
   $sql = "select count(*) as cnt from book where lawyerid = $userid";
