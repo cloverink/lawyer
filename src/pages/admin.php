@@ -173,17 +173,23 @@ function wait() {
   __DrawUserChart();
 
 }
+
 wait();
 
 
 function __DrawUserChart() {
+  var total = 0;
+  $.each(user_count_cnt,function() {
+    total += +this;
+  });
+
   var ctx = document.getElementById("myChart");
     var myChart = new Chart(ctx, {
       type: 'bar',
       data: {
         labels: user_count_name,
         datasets: [{
-          label: '# ผู้ใช้ทั้งหมด',
+          label: '# ผู้ใช้ทั้งหมด (' + total + ' คน)',
           data: user_count_cnt,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',

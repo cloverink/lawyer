@@ -11,6 +11,9 @@ if(!empty($omiseToken)) {
   $sql = "update user set topup = topup + 499 where id = $userid";
   $res = $conn->query($sql);
 
+  $sql = "insert into income(userid) value($userid)";
+  $res = $conn->query($sql);
+
   if($res) {
     header('Location: /topup?status=completed');
     exit();
