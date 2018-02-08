@@ -36,9 +36,9 @@ $lawyer = $res2->fetch_assoc();
       <?php
       for($i=0;$i<5;$i++):
         if($i<$rating["rating"]):
-          echo '<i class="fa fa-star" aria-hidden="true"></i>';
+          echo '<i class="fa fa-star" aria-hidden="true"></i> ';
         else:
-          echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+          echo '<i class="fa fa-star-o" aria-hidden="true"></i> ';
         endif;
       endfor; 
       ?>
