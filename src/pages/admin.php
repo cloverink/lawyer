@@ -44,6 +44,13 @@ $sql = "select * from user";
 $res = $conn->query($sql);
 ?>
 
+
+
+
+
+
+
+
 <table class="table table-striped">
 <tr>
   <th>#</th>
