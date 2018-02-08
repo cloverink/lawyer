@@ -1,11 +1,43 @@
 <?php
 $user = S('user');
+$filter = G("filter");
+$search = PP("search");
 
 $sql = "select * from user where type = 1";
+
+if(!empty($filter) && !empty($search)) {
+  $sql = "select * from user u inner join lawyer l on u.id = l.userid where (u.name like '%$search%' or u.email like '%$search%' or u.address like '%$search%' or u.tel like '%$search%' or edu like '%$search%' or skill like '%$search%' or exp like '%$search%') && type = 1";
+}
+
 $res = $conn->query($sql);
+
 ?>
 <section class="home-section">
 <div class="lawyer-list">
+
+<?php
+
+
+if(!empty($filter)) {
+  echo "ค้นหาคำว่า '$search'";
+}
+?>
+
+<form class="form-inline" method="post" action="/lawyer?filter=yes">
+  <div class="form-group">
+    <div class="input-group">
+      <input type="text" class="form-control" id="search" name="search" placeholder="ค้นหา">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+  <?php if(!empty($filter)) { ?>
+  <a href="/lawyer" class="btn btn-info">ยกเลิกการค้นหา</a>
+  <?php } ?>
+</form>
+
+<hr>
+
+
 <?php while($o = $res->fetch_assoc()): 
 
 $id = $o["id"];
