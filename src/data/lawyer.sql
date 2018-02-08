@@ -68,7 +68,7 @@ CREATE TABLE `income` (
   `id` int(11) NOT NULL,
   `userid` int(11) DEFAULT NULL,
   `dtcreate` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `income`
@@ -102,7 +102,7 @@ CREATE TABLE `lawyer` (
   `skill` text COLLATE utf8_bin,
   `exp` text COLLATE utf8_bin,
   `price` int(11) DEFAULT '490'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `lawyer`
