@@ -25,13 +25,25 @@ $lawyer = $res2->fetch_assoc();
   </div>
   <div class="desc">
     <div class="name"><?=$o['name']?></div>
+
+    <?php
+      $sql3 = "select FLOOR(AVG(n.rate)) as rating from lawyer l inner join note n on l.userid = n.lawyerid where l.userid = $id";
+      $res3 = $conn->query($sql3);
+      $rating = $res3->fetch_assoc();
+    ?>
+
     <div class="rate">
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star" aria-hidden="true"></i>
-      <i class="fa fa-star-o" aria-hidden="true"></i>
+      <?php
+      for($i=0;$i<5;$i++):
+        if($i<$rating["rating"]):
+          echo '<i class="fa fa-star" aria-hidden="true"></i>';
+        else:
+          echo '<i class="fa fa-star-o" aria-hidden="true"></i>';
+        endif;
+      endfor; 
+      ?>
     </div>
+
     <div class="status">
       <i class="fa fa-circle" aria-hidden="true"></i> Online
     </div>
