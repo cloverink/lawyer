@@ -1,9 +1,45 @@
 body.template-lawyer {
-
   iframe {
     width: 100%;
     height: 400px;
     border: solid 1px #eee;
   }
+  #comment-list {
+    &>div {
+      display: block;
+      margin-bottom: 10px;
+      background: #eee;
+      border-radius: 20px;
+      padding: 20px;
 
+      .bot {
+        display: inline-block;
+        width: 100%;
+
+        .by {
+          display: inline-block;  
+
+
+          span {
+            font-size: 10px;
+            
+            &:first-child {
+              font-style: italic;
+            }
+            &:last-child {
+              margin-left: 10px;
+              color: #ccc;
+            }
+          }
+        }
+
+        .rate {
+          float: right;
+          .fa-star {
+            color: #FFC107;
+          }
+        }
+      }
+    }
+  }
 }

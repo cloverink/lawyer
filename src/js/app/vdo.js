@@ -1,6 +1,6 @@
 
 
-var Main = (function (self) {
+var VDO = (function (self) {
   var my = self;
   var fn = {};
 
@@ -227,4 +227,4 @@ var Main = (function (self) {
 
   return my;
 
-})(Main || {}).init();
+})(VDO || {}).init();

@@ -10,7 +10,7 @@ function P($var, $else="") {
   return isset($_POST[$var])? $_POST[$var] : $else;
 }
 
-function PP($var) {
+function PP($var, $else="") {
   global $conn;
   return $conn->real_escape_string(trim(P($var)));
 }
