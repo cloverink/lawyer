@@ -12,22 +12,35 @@ if($user["type"] != 2) {
   exit();
 }
 
+$del = G("del"); 
+if(!empty($del)):
+  
+  $sql = "delete user where id = $del";
+  $conn->query($sql);
+
+  header("Location: /admin");
+  exit();
+
+endif;
+
 $save = G("save");
 if(!empty($save)):
 
   $type = PP("type");
   $detail = PP("detail");
 
-  $sql = "update user set type=$type, detail='$detail' where id = $save";
+  $sql = "update user set type=$type where id = $save";
   $conn->query($sql);
+
   header("Location: /admin");
   exit();
+
 endif;
 
 $edit = G("edit");
 
 if(empty($edit)):
-$sql = "select * from user where type != 2";
+$sql = "select * from user";
 $res = $conn->query($sql);
 ?>
 
@@ -58,7 +71,11 @@ $type = $r->fetch_assoc();
   <td><?=$type["name"]?></td>
   <td>
     <a class="btn btn-primary btnEdit" href="/admin?edit=<?=$o["id"]?>" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+    <? if($o["type"] < 2): ?>
     <a class="btn btn-danger btnDel" href="/admin?del=<?=$o["id"]?>" role="button"><i class="fa fa-trash" aria-hidden="true"></i></a>
+    <? endif; ?>
+
   </td>
 </tr>
 <?php
