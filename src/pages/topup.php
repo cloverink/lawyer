@@ -1,9 +1,40 @@
+<?php
 
+$omiseToken = P("omiseToken");
+
+if(!empty($omiseToken)) {
+
+  $user = $_SESSION["user"];
+
+  $userid = $user['id'];
+
+  $sql = "update user set topup = topup + 499 where id = $userid";
+  $res = $conn->query($sql);
+
+  if($res) {
+    header('Location: /topup?status=completed');
+    exit();
+  }else{
+    header('Location: /topup?status=incompleted');
+    exit();
+  }
+}
+?>
 <nav class="breadcrumb">
   <a class="breadcrumb-item" href="/">Home</a>
   <a class="breadcrumb-item" href="/profile">Profile</a>
   <span class="breadcrumb-item active">เติมเงิน</span>
 </nav>
+
+
+<?php
+$status = G("status");
+if($status == "completed"):
+  echo '<div class="alert alert-success">เติมเงินเสร็จสมบูรณ์</div>';
+elseif($status == "incompleted"):
+  echo '<div class="alert alert-danger">กรุณาทำรายการใหม่</div>';
+endif;
+?>
 
 <div class="container col-sm-3">
 <br>
@@ -15,16 +46,19 @@
   </div>
   <div class="panel-footer">
 
-  <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-  <input type="hidden" name="cmd" value="_s-xclick">
-  <input type="hidden" name="hosted_button_id" value="VPQXB85DLWMNY">
-  <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-  <img alt="" border="0" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
-  </form>
+    <form class="checkout-form" name="checkoutForm" method="POST" action="/topup">
+      <script type="text/javascript" src="https://cdn.omise.co/omise.js"
+              data-key="pkey_test_5awfskc743q09qlf8rp"
+              data-frame-label="Lawyer Topup"
+              data-frame-description="เติมเงินเข้าสู่ระบบ"
+              data-amount="49900"
+              data-currency="THB"
+              data-image="//<?=$_SERVER['HTTP_HOST'];?>/images/icon.png"
+              ></script>
+    </form>
 
   </div>
 </div>
-
 
 
 

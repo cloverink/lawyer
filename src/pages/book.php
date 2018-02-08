@@ -63,7 +63,6 @@ if($status == "completed"):
 elseif($status == "incompleted"):
   echo '<div class="alert alert-danger">กรุณาทำรายการใหม่</div>';
 endif;
-
 ?>
 
 <div id="bookAlert" class="alert alert-danger hide"></div>
