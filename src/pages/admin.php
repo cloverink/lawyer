@@ -35,7 +35,6 @@ $res = $conn->query($sql);
 <tr>
   <th>#</th>
   <th>name</th>
-  <th>username</th>
   <th>email</th>
   <th>tel</th>
   <th>type</th>
@@ -54,7 +53,6 @@ $type = $r->fetch_assoc();
 <tr>
   <td><?=$o["id"]?></td>
   <td><?=$o["name"]?></td>
-  <td><?=$o["username"]?></td>
   <td><?=$o["email"]?></td>
   <td><?=$o["tel"]?></td>
   <td><?=$type["name"]?></td>
@@ -83,7 +81,7 @@ $r = $conn->query($sql);
 <div class="profile-container">
   <h3>Profile</h3>
   <div class="profile-body">
-    <div class="avt" style="background-image: url('/<?=$user["avt"]?>')"></div>
+    <div class="avt" style="background-image: url('/<?=$o["avt"]?>')"></div>
     <div class="desc">
       <div>Name: <span><?=$o["name"]?></span></div>
       <div>Email: <span><?=$o["email"]?></span></div>
@@ -99,10 +97,6 @@ $r = $conn->query($sql);
           endwhile;
         ?>
       </select>
-      </div>
-      <div>
-        Detail:
-        <textarea class="form-control" rows="3" name="detail"><?=$o["detail"]?></textarea>
       </div>
     </div>
 
