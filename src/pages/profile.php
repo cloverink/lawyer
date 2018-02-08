@@ -143,6 +143,14 @@ $lawyer = $res->fetch_assoc();
     <a class="btn btn-success" href="/topup" role="button">เติมเงิน</a>
     <?php } ?>
     <a class="btn btn-default" href="/logout" role="button">ออกจากระบบ</a>
+    
+    <? if(isAdmin()): ?>
+    <br><br>
+    <a href="/admin" class="btn btn-warning">ผู้ดูแลระบบ</a>
+    <? endif; ?>
+
     <?php } ?>
+
+    
   </div>
 </div>

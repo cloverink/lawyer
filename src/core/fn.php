@@ -31,6 +31,12 @@ function isLogon() {
   return !empty(S("login"));
 }
 
+function isAdmin() {
+  $user = S("user");
+  $usertype = $user["type"];
+  return $usertype >= 2;
+}
+
 function my_server_url() {
   $server_name = $_SERVER['SERVER_NAME'];
 

@@ -17,6 +17,8 @@ function getActiveMenu($name) {
 <?php
 $user = S("user");
 $userid = $user["id"];
+$usertype = $user["type"];
+
 if($user["type"] == 0) {
   $sql = "select count(*) as cnt from book where uid = $userid";
   $res = $conn->query($sql);
@@ -39,7 +41,8 @@ if($user["type"] == 0) {
 
 <a href="/about">เกี่ยวกับเรา</a>
 <? if(isLogon()): ?>
-<a href="/profile" class="pull-right">ข้อมูลส่วนตัว</a>
+  <a href="/profile" class="pull-right">ข้อมูลส่วนตัว</a>
 <? endif; ?>
+
 </nav>
 </header>
