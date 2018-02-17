@@ -45,9 +45,12 @@ $avt = empty($o["avt"])? "images/user-default.png" : $o["avt"];
 
 
 $sql2 = "select * from lawyer where userid = $id";
+
 $res2 = $conn->query($sql2);
 $lawyer = $res2->fetch_assoc();
 
+
+if($lawyer["actived"] == 0) continue;
 
 ?>
 

@@ -23,6 +23,18 @@ if(!empty($del)):
 
 endif;
 
+$check= G("check");
+if(!empty($check)):
+
+  $actived = G("actived") === "true"? 1 : 0;
+
+  $sql = "update lawyer set actived=$actived where userid=$check";
+  $conn->query($sql);
+
+  header("Location: /admin");
+  exit();
+endif;
+
 $save = G("save");
 if(!empty($save)):
 
@@ -65,6 +77,7 @@ $res = $conn->query($sql);
   <th>email</th>
   <th>tel</th>
   <th>type</th>
+  <th>active</th>
   <th>
     <i class="fa fa-cog" aria-hidden="true"></i>
   </th>
@@ -83,6 +96,16 @@ $type = $r->fetch_assoc();
   <td><?=$o["email"]?></td>
   <td><?=$o["tel"]?></td>
   <td><?=$type["name"]?></td>
+  <td width="50px">
+  <?php if($type["name"] == "lawyer"){ 
+    $sql3="select * from lawyer where userid = ". $o["id"];
+    $res3 = $conn->query($sql3);
+    $lawyer = $res3->fetch_assoc();
+    $check = ($lawyer["actived"] == 1)? "checked" : "";
+  ?>
+    <input class="chkToActived" type="checkbox" value="<?=$o["id"]?>" <?=$check?>>
+  <? } ?>
+  </td>
   <td>
     <a class="btn btn-primary btn-xs btnEdit" href="/admin?edit=<?=$o["id"]?>" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 

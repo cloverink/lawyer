@@ -9,6 +9,15 @@ var Admin = (function (self) {
       return false;
     });
 
+    $(".chkToActived").on("click", function(){
+      $this = $(this);
+      id = $this.val();
+      actived = $this.prop('checked');
+      window.location.href = "/admin?check=" + id + "&actived=" + actived;
+
+      return false;
+    })
+
   };
 
 
